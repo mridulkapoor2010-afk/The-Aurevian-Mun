@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aurevian MUN Registration</title>
+
+<style>
+
+body {
+    background: linear-gradient(135deg, #0a0f24, #1c2b50);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    max-width: 450px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.15);
+    backdrop-filter: blur(8px);
+}
+
+h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 15px;
+}
+
+/* FIXED DROPDOWN STYLE */
+select {
+    background-color: rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* Dropdown items visible */
+select option {
+    color: black !important;
+    background: white !important;
+}
+
+input[type="file"] {
+    padding: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #3aa8ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d8ef2;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>DELEGATE APPLICATION FORM</h2>
+
+<h3>Conference Details:</h3>
+<p>
+Venue – Offline <br>
+Date – 21 December 2025 <br>
+Email – mridulkapoor2010@gmail.com <br>
+Instagram – 
+<a href="https://www.instagram.com/aurevian.official?igsh=d3J0NWZyZXc4dmYy" target="_blank">
+@aurevian.official
+</a>
+</p>
+
+<h3>EARLY BIRD OFFER (Valid till 28 November 2025)</h3>
+<p>₹2349/-</p>
+
+<h3>DELEGATION REGISTRATION FEE:</h3>
+<p>₹2649/-</p>
+
+<h3>Committee:</h3>
+<p>IPL – MEGA AUCTION</p>
+
+<h3>For Further Inquiries:</h3>
+<p>
+Mridul Kapoor (Founder) <br>
+📞 8287875255 <br><br>
+
+Raghav Goel (Founder) <br>
+📞 +91 99995 51568
+</p>
+
+<p><strong>Note:</strong> The transaction amount covers the complete registration for all four participants together i.e Early Bird ₹9396 or Delegation Registartion ₹10596  </p>
+
+<hr>
+
+<h2>Aurevian MUN Registration</h2>
+
+<form id="regForm" method="POST" enctype="multipart/form-data">
+
+<label>Name</label>
+<input type="text" id="name" name="name" required>
+
+<label>Phone Number</label>
+<input type="text" id="phone" name="phone" required>
+
+<label>Alternate Phone (Optional)</label>
+<input type="text" name="alt_phone">
+
+<label>School / Institution (Optional)</label>
+<input type="text" name="school">
+
+<label>Email ID</label>
+<input type="email" id="email" name="email" required>
+
+<label>Select Team</label>
+<select name="team" id="team" required>
+    <option value="">Loading Teams...</option>
+</select>
+
+<label>Team Members</label>
+<div style="display: flex; gap: 8px; width: 100%; margin-top: 6px;">
+    <input type="text" name="member1" placeholder="Member 1" style="flex: 1;"required>
+    <input type="text" name="member2" placeholder="Member 2" style="flex: 1;"required>
+    <input type="text" name="member3" placeholder="Member 3" style="flex: 1;"required>
+    <input type="text" name="member4" placeholder="Member 4" style="flex: 1;"required>
+</div>
+
+
+<label>UPI Payment ID</label>
+<input type="text" name="upi" value="8595635419@pthdfc" readonly>
+
+<label>Upload Payment Proof</label>
+<input type="file" id="payment" name="payment" accept="image/*" required>
+
+<label>Reference (Optional)</label>
+<input type="text" name="reference">
+
+<label>
+    <input type="checkbox" id="terms" required> I agree to Terms
+</label>
+
+<button type="submit">Submit Registration</button>
+
+</form>
+
+</div>
+
+<script>
+const appURL = "https://script.google.com/macros/s/AKfycbwYuf_CxpUoS7939gzMTDjlkar1qFMnXaHTwpF7BpxvVfvfOT7dOcWmVNujKWPeX1kPew/exec";   // <-- replace
+
+// LOAD TEAMS
+async function loadTeams() {
+    const res = await fetch(appURL + "?action=getTeams");
+    const teams = await res.json();
+
+    const sel = document.getElementById("team");
+    sel.innerHTML = "";
+
+    teams.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t.name;
+        opt.textContent = t.locked ? `${t.name} (Taken)` : t.name;
+        opt.disabled = t.locked;
+        sel.appendChild(opt);
+    })
+
+
+loadTeams();
+
+// SUBMIT FORM + FILE + SHOW CONFIRMATION PAGE
+document.getElementById("regForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const form = document.getElementById("regForm");
+    const formData = new FormData(form);
+
+    const response = await fetch(appURL, {
+        method: "POST",
+        body: formData
+    });
+
+    const result = await response.text();
+
+    if (result === "success") {
+        window.location.href = "submitted.html";  // <-- creates success page
+    } else {
+        alert("Error submitting form");
+    }
+});
+</script>
+
+}
+
+loadTeams();
+
+document.getElementById("regForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let team = document.getElementById("team").value;
+    let payment = document.getElementById("payment").files.length;
+    let terms = document.getElementById("terms").checked;
+
+    if (name === "") { alert("Please enter your name"); return; }
+    if (phone.length !== 10 || isNaN(phone)) { alert("Enter valid 10-digit phone number"); return; }
+    if (email === "") { alert("Please enter your email"); return; }
+    if (team === "") { alert("Please select a team"); return; }
+    if (payment === 0) { alert("Please upload payment proof"); return; }
+    if (!terms) { alert("Please accept the Terms"); return; }
+
+    let formData = new FormData(document.getElementById("regForm"));
+
+    let response = await fetch(appURL, {
+        method: "POST",
+        body: formData
+    });
+
+    let result = await response.text();
+    alert(result);
+});
+</script>
+
+</body>
+</html>
