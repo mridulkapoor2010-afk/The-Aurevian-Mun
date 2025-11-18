@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aurevian MUN Registration</title>
+
+<style>
+
+body {
+    background: linear-gradient(135deg, #0a0f24, #1c2b50);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    max-width: 450px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.15);
+    backdrop-filter: blur(8px);
+}
+
+h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 15px;
+}
+
+select option {
+    color: black !important;
+    background: white !important;
+}
+
+input[type="file"] {
+    padding: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #3aa8ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d8ef2;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2> The Aurevian Mun</h2>
+
+<h3>Conference Details:</h3>
+<p>
+Venue – Royal Pepper,Wazirpur <br>
+Date – 21 December 2025 <br>
+Email: <a href="mailto:aurevian.official@gmail.com">aurevian.official@gmail.com</a><br>
+Instagram – 
+<a href="https://www.instagram.com/aurevian.official?igsh=d3J0NWZyZXc4dmYy" target="_blank">
+@aurevian.official
+</a>
+</p>
+
+<h3>EARLY BIRD OFFER (Valid till 28 November 2025)</h3>
+<p>₹2349/-</p>
+
+<h3>DELEGATION REGISTRATION FEE:</h3>
+<p>₹2649/-</p>
+
+<h3>Committee:</h3>
+<p>IPL – MEGA AUCTION</p>
+
+<h3>For Further Inquiries:</h3>
+<p>
+Mridul Kapoor (Founder) <br>
+📞 8287875255 <br><br>
+
+Raghav Goel (Founder) <br>
+📞 +91 99995 51568
+</p>
+
+<p><strong>Note:</strong> The transaction amount covers the complete registration for all four participants together i.e Early Bird ₹9396 or Delegation Registartion ₹10596  </p>
+
+<hr>
+
+<h2>Delegate Application Form</h2>
+
+<form id="regForm" method="POST" enctype="multipart/form-data">
+
+<label>Name</label>
+<input type="text" id="name" name="name" required>
+
+<label>Phone Number</label>
+<input type="text" id="phone" name="phone" required>
+
+<label>Email ID</label>
+<input type="email" id="email" name="email" required>
+
+<h3>Team Preferences</h3>
+<label>Preference 1</label>
+<select id="pref1" name="pref1" required></select>
+
+<label>Preference 2</label>
+<select id="pref2" name="pref2" required></select>
+
+<label>Preference 3</label>
+<select id="pref3" name="pref3" required></select>
+
+<h3>Team Members</h3>
+
+<div class="member-row">
+    <input type="text" name="member1" placeholder="Member 1" required>
+    <input type="text" name="member1_phone" placeholder="Phone" required>
+    <input type="email" name="member1_email" placeholder="Email" required>
+</div>
+
+<div class="member-row">
+    <input type="text" name="member2" placeholder="Member 2" required>
+    <input type="text" name="member2_phone" placeholder="Phone" required>
+    <input type="email" name="member2_email" placeholder="Email" required>
+</div>
+
+<div class="member-row">
+    <input type="text" name="member3" placeholder="Member 3" required>
+    <input type="text" name="member3_phone" placeholder="Phone" required>
+    <input type="email" name="member3_email" placeholder="Email" required>
+</div>
+
+<div class="member-row">
+    <input type="text" name="member4" placeholder="Member 4" required>
+    <input type="text" name="member4_phone" placeholder="Phone" required>
+    <input type="email" name="member4_email" placeholder="Email" required>
+</div>
+
+<label>UPI Payment ID</label>
+<input type="text" name="upi" value="8595635419@pthdfc" readonly>
+<p>
+<strong>Note:</strong> Please send the screenshot of payment to:  
+<br>Instagram: <a href="https://www.instagram.com/aurevian.official/" target="_blank">@aurevian.official</a>  
+<br>WhatsApp: <a href="https://wa.me/918287875255" target="_blank">8287875255</a>  
+<br>Email: <a href="mailto:aurevian.official@gmail.com">aurevian.official@gmail.com</a>
+</p>
+
+</p>
+
+<label>
+    <input type="checkbox" id="terms" required> I agree to Terms
+</label>
+
+<button type="submit">Submit Registration</button>
+</form>
+</div>
+
+<script>
+// FIXED TEAM LIST (your error was missing quotes)
+const teams = [
+    "Mumbai Indians",
+    "Chennai Super Kings",
+    "Royal Challengers Bengaluru",
+    "Kolkata Knight Riders",
+    "Sunrisers Hyderabad",
+    "Rajasthan Royals",
+    "Delhi Capitals",
+    "Punjab Kings",
+    "Lucknow SuperGiants",
+    "Gujarat Titans",
+    "Rising Pune SuperGiants",
+    "Deccan Chargers",
+    "Gujarat Lions",
+    "Kochi Tuskers Kerala",
+    "Indore Invincibles",
+    "Assam Falcons",
+    "Goa Bashers",
+    "Chandigarh Rangers"
+];
+
+function loadTeams() {
+    const selects = ["pref1", "pref2", "pref3"];
+    selects.forEach(id => {
+        const sel = document.getElementById(id);
+        sel.innerHTML = `<option value="">Select Team</option>`;
+        teams.forEach(t => {
+            const opt = document.createElement("option");
+            opt.value = t;
+            opt.textContent = t;
+            sel.appendChild(opt);
+        });
+    });
+}
+
+function preventDuplicateSelection() {
+    const p1 = document.getElementById("pref1");
+    const p2 = document.getElementById("pref2");
+    const p3 = document.getElementById("pref3");
+    const all = [p1, p2, p3];
+
+    all.forEach(sel => {
+        sel.addEventListener("change", () => {
+            const selected = new Set(all.map(x => x.value));
+            all.forEach(s => {
+                Array.from(s.options).forEach(opt => {
+                    if (opt.value && selected.has(opt.value) && s.value !== opt.value) {
+                        opt.disabled = true;
+                    } else {
+                        opt.disabled = false;
+                    }
+                });
+            });
+        });
+    });
+}
+
+loadTeams();
+preventDuplicateSelection();
+
+// YOUR WEB APP URL
+const appURL = "https://script.google.com/macros/s/AKfycbzZsGkss5Oi3T2FFBCQ8vYez3YBt6vadw0YnsQNjOQKGK0IsoQzNfN7FLyR3vcMLwv4ZQ/exec";
+
+document.getElementById("regForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(document.getElementById("regForm"));
+
+    const response = await fetch(appURL, {
+        method: "POST",
+        body: formData
+    });
+
+    const result = await response.text();
+    alert(result);
+});
+</script>
+</body>
+</html>
